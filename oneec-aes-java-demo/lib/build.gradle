@@ -1,0 +1,46 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    ext.jackson_version = '2.13.1'
+}
+
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+dependencies {
+    implementation group: 'javax.annotation', name: 'javax.annotation-api', version: '1.3.2'
+
+    compileOnly group: 'org.apache.kafka', name: 'kafka-clients', version: '3.0.0'
+    compileOnly group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: "$jackson_version"
+    compileOnly group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: "$jackson_version"
+    compileOnly group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: "$jackson_version"
+
+    compileOnly 'com.google.guava:guava:31.0.1-jre'
+
+    compileOnly group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
+
+    // Use JUnit test framework
+    testImplementation group: 'junit', name: 'junit', version: '4.13.2'
+    testImplementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.17.1'
+    testImplementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.17.1'
+    testImplementation group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.17.1'
+
+    testImplementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: "$jackson_version"
+    testImplementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: "$jackson_version"
+    testImplementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: "$jackson_version"
+
+    testImplementation 'com.google.guava:guava:31.0.1-jre'
+
+    testImplementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.36'
+}
